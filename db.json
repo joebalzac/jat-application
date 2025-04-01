@@ -1,0 +1,204 @@
+{
+  "jobs": [
+    {
+      "id": 1,
+      "company": "Netflix",
+      "title": "Frontend Engineer",
+      "status": "Wishlist",
+      "location": "Remote",
+      "appliedDate": "2025-03-01",
+      "tags": ["React", "Streaming"],
+      "notes": "Saw on LinkedIn"
+    },
+    {
+      "id": 2,
+      "company": "Google",
+      "title": "UI Engineer",
+      "status": "Applied",
+      "location": "NYC",
+      "appliedDate": "2025-03-02",
+      "tags": ["Material UI", "Design Systems"],
+      "notes": "Submitted via referral"
+    },
+    {
+      "id": 3,
+      "company": "Meta",
+      "title": "Product Developer",
+      "status": "Interviewing",
+      "location": "Remote",
+      "appliedDate": "2025-03-04",
+      "tags": ["Next.js", "Hooks"],
+      "notes": "First round complete"
+    },
+    {
+      "id": 4,
+      "company": "Spotify",
+      "title": "Frontend Dev",
+      "status": "Offer",
+      "location": "Berlin",
+      "appliedDate": "2025-03-05",
+      "tags": ["Accessibility", "Animation"],
+      "notes": "Offer received, deciding"
+    },
+    {
+      "id": 5,
+      "company": "Airbnb",
+      "title": "Web Engineer",
+      "status": "Rejected",
+      "location": "SF",
+      "appliedDate": "2025-02-27",
+      "tags": ["Tailwind", "Performance"],
+      "notes": "Rejection email received"
+    },
+    {
+      "id": 6,
+      "company": "Stripe",
+      "title": "Frontend Lead",
+      "status": "Applied",
+      "location": "Remote",
+      "appliedDate": "2025-03-03",
+      "tags": ["Design Systems", "TypeScript"],
+      "notes": "Cold applied"
+    },
+    {
+      "id": 7,
+      "company": "Shopify",
+      "title": "React Developer",
+      "status": "Interviewing",
+      "location": "Canada",
+      "appliedDate": "2025-03-04",
+      "tags": ["Polaris", "GraphQL"],
+      "notes": "Waiting on round 2"
+    },
+    {
+      "id": 8,
+      "company": "Tesla",
+      "title": "UI Engineer",
+      "status": "Wishlist",
+      "location": "Texas",
+      "appliedDate": "2025-03-01",
+      "tags": ["Vite", "WebGL"],
+      "notes": "Interesting stack"
+    },
+    {
+      "id": 9,
+      "company": "Amazon",
+      "title": "Web UI Developer",
+      "status": "Applied",
+      "location": "Seattle",
+      "appliedDate": "2025-03-02",
+      "tags": ["AWS", "Frontend"],
+      "notes": "Applied via careers page"
+    },
+    {
+      "id": 10,
+      "company": "Figma",
+      "title": "Frontend Developer",
+      "status": "Rejected",
+      "location": "Remote",
+      "appliedDate": "2025-02-28",
+      "tags": ["Canvas", "Collaboration"],
+      "notes": "Did not proceed"
+    },
+    {
+      "id": 11,
+      "company": "Adobe",
+      "title": "React Engineer",
+      "status": "Wishlist",
+      "location": "Remote",
+      "appliedDate": "2025-03-01",
+      "tags": ["UX", "Components"],
+      "notes": "Looks promising"
+    },
+    {
+      "id": 12,
+      "company": "Twitter",
+      "title": "Frontend Dev",
+      "status": "Applied",
+      "location": "Remote",
+      "appliedDate": "2025-03-03",
+      "tags": ["Realtime", "WebSockets"],
+      "notes": "Waiting to hear back"
+    },
+    {
+      "id": 13,
+      "company": "Notion",
+      "title": "Web Engineer",
+      "status": "Interviewing",
+      "location": "Remote",
+      "appliedDate": "2025-03-05",
+      "tags": ["Editor", "UX"],
+      "notes": "Portfolio shared"
+    },
+    {
+      "id": 14,
+      "company": "Duolingo",
+      "title": "Frontend Engineer",
+      "status": "Offer",
+      "location": "Pittsburgh",
+      "appliedDate": "2025-03-05",
+      "tags": ["Animations", "Accessibility"],
+      "notes": "Offer made yesterday"
+    },
+    {
+      "id": 15,
+      "company": "Discord",
+      "title": "React Engineer",
+      "status": "Rejected",
+      "location": "Remote",
+      "appliedDate": "2025-02-26",
+      "tags": ["Realtime", "Electron"],
+      "notes": "Did not pass tech screen"
+    },
+    {
+      "id": 16,
+      "company": "Dropbox",
+      "title": "UI Developer",
+      "status": "Wishlist",
+      "location": "Remote",
+      "appliedDate": "2025-03-01",
+      "tags": ["Animations", "Dark Mode"],
+      "notes": "Saving for later"
+    },
+    {
+      "id": 17,
+      "company": "Twitch",
+      "title": "Frontend Engineer",
+      "status": "Applied",
+      "location": "Remote",
+      "appliedDate": "2025-03-03",
+      "tags": ["Streaming", "UI"],
+      "notes": "Gaming focus"
+    },
+    {
+      "id": 18,
+      "company": "Canva",
+      "title": "Design Engineer",
+      "status": "Interviewing",
+      "location": "Australia",
+      "appliedDate": "2025-03-04",
+      "tags": ["UX", "Accessibility"],
+      "notes": "Recruiter reached out"
+    },
+    {
+      "id": 19,
+      "company": "Asana",
+      "title": "Frontend Dev",
+      "status": "Wishlist",
+      "location": "Remote",
+      "appliedDate": "2025-03-01",
+      "tags": ["Productivity", "React"],
+      "notes": "Saved from Hacker News"
+    },
+    {
+      "id": 20,
+      "company": "Linear",
+      "title": "Frontend Engineer",
+      "status": "Offer",
+      "location": "Remote",
+      "appliedDate": "2025-03-05",
+      "tags": ["Design Systems", "Speed"],
+      "notes": "Dream offer"
+    }
+  ]
+}
