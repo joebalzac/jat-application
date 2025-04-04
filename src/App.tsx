@@ -1,10 +1,10 @@
 import "./App.css";
-import JobBoard from "./Components/JobBoard";
+import JobBoardTwo from "./Components/JobBoardTwo";
 
 function App() {
   return (
     <>
-      <JobBoard />
+      <JobBoardTwo />
     </>
   );
 }
