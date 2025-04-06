@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Job, useJobs } from "../Hooks/useJobs";
 
 const statuses = ["Wishlist", "Applied", "Interviewing", "Offer", "Rejected"];
@@ -6,7 +6,16 @@ const statuses = ["Wishlist", "Applied", "Interviewing", "Offer", "Rejected"];
 const JobBoardTwo = () => {
   const { data: jobs, isLoading, error } = useJobs();
   const [allJobs, setAllJobs] = useState<Job[]>([]);
-  const [selectedJobs, setSelectedJobs] = useState<number[]>([]);
+  const [selectedJobs, setSelectedJobs] = useState<Job[]>([]);
+  const [searchInput, setSearchInput] = useState("");
+  const [search, setSearch] = useState("");
+
+  const filteredJobs = allJobs.filter(
+    (job) =>
+      job.title.toLowerCase().includes(search.toLowerCase()) ||
+      job.company.toLowerCase().includes(search.toLowerCase()) ||
+      job.location.toLowerCase().includes(search.toLowerCase())
+  );
 
   useEffect(() => {
     if (jobs) {
@@ -25,37 +34,102 @@ const JobBoardTwo = () => {
   const groupedJobs: Record<string, Job[]> = {};
 
   statuses.forEach((status) => {
-    groupedJobs[status] = allJobs?.filter((job) => job.status === status);
+    groupedJobs[status] = filteredJobs?.filter((job) => job.status === status);
   });
 
   const handleSelectedJob = (job: Job) => {
-    setSelectedJobs([...selectedJobs, job.id]);
+    setSelectedJobs((prev) => {
+      const prevSelected = selectedJobs.some((j) => j.id === job.id);
+      if (prevSelected) {
+        return prev;
+      } else {
+        return [...prev, job];
+      }
+    });
+  };
+
+  const handleRemoveJob = (job: Job) => {
+    setSelectedJobs(selectedJobs.filter((js) => js.id !== job.id));
   };
 
   const handleDeleteJob = (id: number) => {
     setAllJobs(allJobs?.filter((job) => job.id !== id));
+    setSelectedJobs(
+      selectedJobs.filter((selectedJob) => selectedJob.id !== id)
+    );
   };
 
   return (
-    <div className="grid grid-cols-3">
-      {statuses.map((status) => {
-        return (
-          <div>
+    <div>
+      <input
+        className="border border-blue-600 rounded-sm"
+        type="search"
+        value={searchInput}
+        onChange={(e) => setSearchInput(e.target.value)}
+      />
+      <button
+        className="border-pink-400 text-white bg-pink-500 rounded-sm"
+        onClick={() => setSearch(searchInput)}
+      >
+        Search
+      </button>
+      <div className="grid grid-cols-3 gap-32">
+        {statuses.map((status) => {
+          return (
             <div>
-              <h3>{status}</h3>
-              {groupedJobs[status].map((job) => (
-                <div className="flex items-center">
-                  <h3>{job.title}</h3>
-                  <p>{job.company}</p>
-                  <p> {job.location}</p>
-                  <button onClick={() => handleSelectedJob(job)}>Select</button>
-                  <button onClick={() => handleDeleteJob(job.id)}>Delete</button>
-                </div>
-              ))}
+              <div className="flex flex-col items-start gap-4">
+                <h3 className="text-2xl text-blue-800 border-blue-900 border p-2 rounded-sm shadow">
+                  {status}
+                </h3>
+                {groupedJobs[status].map((job) => (
+                  <div className="flex items-center">
+                    <h3>{job.title}</h3>
+                    <p>{job.company}</p>
+                    <p> {job.location}</p>
+                    <button
+                      className="p-1 mx-2 cursor-pointer rounded-md text-purple-400 border-purple-400 border hover:bg-purple-600 hover:text-white"
+                      onClick={() => handleSelectedJob(job)}
+                    >
+                      Select
+                    </button>
+                    <button
+                      className="p-1 mx-2 cursor-pointer rounded-md text-red-400 border-red-400 border hover:bg-red-600 hover:text-white"
+                      onClick={() => handleDeleteJob(job.id)}
+                    >
+                      Delete
+                    </button>
+                    <button
+                      className="p-1 mx-2 cursor-pointer rounded-md text-orange-400 border-orange-400 border hover:bg-orange-600 hover:text-white"
+                      onClick={() => handleRemoveJob(job)}
+                    >
+                      Remove
+                    </button>
+                  </div>
+                ))}
+              </div>
             </div>
+          );
+        })}
+        {selectedJobs ? (
+          <div>
+            {selectedJobs.map((selectJob) => (
+              <div className="flex items-center">
+                <h3>{selectJob.title}</h3>
+                <div>{selectJob.company}</div>
+                <p>{selectJob.location}</p>
+                <button
+                  className="p-1 mx-2 cursor-pointer rounded-md text-orange-400 border-orange-400 border hover:bg-orange-600 hover:text-white"
+                  onClick={() => handleRemoveJob(selectJob)}
+                >
+                  Remove
+                </button>
+              </div>
+            ))}
           </div>
-        );
-      })}
+        ) : (
+          <div>Add selected jobs here</div>
+        )}
+      </div>
     </div>
   );
 };
