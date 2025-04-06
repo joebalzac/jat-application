@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Job, useJobs } from "../Hooks/useJobs";
+import { Job, JobStatus, useJobs } from "../Hooks/useJobs";
+import { v4 as uuidv4 } from "uuid";
 
 const statuses = ["Wishlist", "Applied", "Interviewing", "Offer", "Rejected"];
 
@@ -9,6 +10,13 @@ const JobBoardTwo = () => {
   const [selectedJobs, setSelectedJobs] = useState<Job[]>([]);
   const [searchInput, setSearchInput] = useState("");
   const [search, setSearch] = useState("");
+
+  const [newJob, setNewJob] = useState({
+    title: "",
+    company: "",
+    location: "",
+    status: "Wishlist",
+  });
 
   const filteredJobs = allJobs.filter(
     (job) =>
@@ -30,6 +38,22 @@ const JobBoardTwo = () => {
   if (error) {
     <div>An unknown error has occurred</div>;
   }
+
+  const handleAddNewJob = (e: React.FormEvent) => {
+    e.preventDefault();
+    const newJobItem: Job = {
+      id: Date.now(),
+      company: newJob.company,
+      title: newJob.title,
+      status: newJob.status as JobStatus,
+      location: newJob.location,
+      appliedDate: new Date().toISOString(),
+      notes: "",
+      tags: [],
+    };
+    setAllJobs([...allJobs, newJobItem]);
+    setNewJob({ title: "", company: "", location: "", status: "Wishlist" });
+  };
 
   const groupedJobs: Record<string, Job[]> = {};
 
@@ -74,6 +98,38 @@ const JobBoardTwo = () => {
         Search
       </button>
       <div className="grid grid-cols-3 gap-32">
+        <form action="" onSubmit={handleAddNewJob}>
+          <input
+            className="border border-blue-600 rounded-sm"
+            type="text"
+            value={newJob.title}
+            onChange={(e) =>
+              setNewJob((prev) => ({ ...prev, title: e.target.value }))
+            }
+          />
+          <input
+            className="border border-blue-600 rounded-sm"
+            type="text"
+            value={newJob.company}
+            onChange={(e) =>
+              setNewJob((prev) => ({ ...prev, company: e.target.value }))
+            }
+          />
+          <input
+            className="border border-blue-600 rounded-sm"
+            type="text"
+            value={newJob.location}
+            onChange={(e) =>
+              setNewJob((prev) => ({ ...prev, location: e.target.value }))
+            }
+          />
+          <button
+            className="border-yellow-400 text-white bg-yellow-400 rounded-sm"
+            type="submit"
+          >
+            Submit
+          </button>
+        </form>
         {statuses.map((status) => {
           return (
             <div>

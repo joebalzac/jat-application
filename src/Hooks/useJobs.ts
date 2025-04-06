@@ -15,7 +15,7 @@ export interface Job {
   status: JobStatus;
   location: string;
   appliedDate: string;
-  // tags: string[];
+  tags: string[];
   notes: string;
 }
 
