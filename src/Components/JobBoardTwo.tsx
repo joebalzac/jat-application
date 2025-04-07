@@ -86,15 +86,15 @@ const JobBoardTwo = () => {
     );
   };
 
-  const handleEditJob = (title: string, id: number) => {
-    setEditJob(title);
+  const handleEditJob = (id: number, title: string) => {
     setEditingJobId(id);
+    setEditJob(title);
   };
 
   const handleSaveJob = () => {
     if (editingJobId !== null && editJob.trim()) {
       setAllJobs(
-        (jobs || []).map((job) =>
+        allJobs.map((job) =>
           job.id === editingJobId ? { ...job, title: editJob } : job
         )
       );
@@ -104,8 +104,8 @@ const JobBoardTwo = () => {
 
   return (
     <div>
-      <div className="flex justify-between items-center">
-        <div>
+      <div className="flex justify-between items-center mb-4">
+        <div className="flex gap-4">
           <input
             className="border border-blue-600 rounded-sm"
             type="search"
@@ -113,14 +113,14 @@ const JobBoardTwo = () => {
             onChange={(e) => setSearchInput(e.target.value)}
           />
           <button
-            className="border-pink-400 text-white bg-pink-500 rounded-sm"
+            className="p-2 border-pink-400 text-white bg-pink-500 rounded-sm"
             onClick={() => setSearch(searchInput)}
           >
             Search
           </button>
         </div>
-        <div>
-          <form action="" onSubmit={handleAddNewJob}>
+        <div className="flex items-center gap-3">
+          <form className="flex gap-4" action="" onSubmit={handleAddNewJob}>
             <input
               className="border border-blue-600 rounded-sm"
               type="text"
@@ -150,11 +150,11 @@ const JobBoardTwo = () => {
             />
             <select name="status" id="">
               {jobs?.map((status) => (
-                <div>{status.title}</div> // Assuming 'title' is a property of 'Job'
+                <div>{status.title}</div>
               ))}
             </select>
             <button
-              className="border-yellow-400 text-white bg-yellow-400 rounded-sm"
+              className="p-2 border-yellow-400 text-white bg-yellow-400 rounded-sm"
               type="submit"
             >
               Submit
@@ -217,7 +217,7 @@ const JobBoardTwo = () => {
                               Remove
                             </button>
                             <button
-                              onClick={() => handleEditJob(job.title, job.id)}
+                              onClick={() => handleEditJob(job.id, job.title)}
                               className="p-1 mx-2 cursor-pointer rounded-md text-pink-400 border-pink-400 border hover:bg-pink-600 hover:text-white"
                             >
                               Edit
